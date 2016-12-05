@@ -29,5 +29,9 @@ namespace Training.Programming.FinalTask.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Policy> Policies { get; set; }
     }
 }
