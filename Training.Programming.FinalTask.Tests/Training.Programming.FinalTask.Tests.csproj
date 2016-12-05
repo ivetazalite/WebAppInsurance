@@ -53,6 +53,12 @@
     <Compile Include="MyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Training.Programming.FinalTask\Training.Programming.FinalTask.csproj">
+      <Project>{28446eec-58ed-4066-944b-1b833d453bc8}</Project>
+      <Name>Training.Programming.FinalTask</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
