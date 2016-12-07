@@ -43,5 +43,7 @@ namespace Training.Programming.FinalTask.Repositories
                 return db.Clients.FirstOrDefault(x => x.ClientSsn == ssn);
             }
         }
+
+      
     }
 }

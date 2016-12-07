@@ -12,6 +12,7 @@ namespace Training.Programming.FinalTask.Models
         public Guid ClientId { get; set; }
         public string ClientSsn { get; set; }
         public Sex ClientSex { get; set; }
+        public Employee ClientType { get; set; }
         public virtual List<Policy> Policies { get; set; }
     }
 
@@ -20,5 +21,11 @@ namespace Training.Programming.FinalTask.Models
         Male,
         Female,
         Other
+    }
+
+    public enum Employee
+    {
+        Yes,
+        No
     }
 }
