@@ -45,8 +45,19 @@ namespace Training.Programming.FinalTask.Logic
             if (age >= 18)
             {
                 //this will change inserted Policy state to Active
-                policy.PolicyState = State.Active;
-                policy.Product.ProductPrice = EmployeeDiscount(policy);
+                if (IsPolicyExistForThisPeriod(policy) == false)
+                {
+                    policy.PolicyState = State.Active;
+                    policy.Product.ProductPrice = EmployeeDiscount(policy);
+                    //calculate payment date
+                    CalculatePaymentDate(policy);
+                    //Some message about payment date
+                }
+                else
+                {
+                    throw new ApplicationException($"You have already existing {policy.Product.ProductName} Policy for period from {policy.PolicyState} till {policy.EndDate}");
+                }
+             
 
                 if (age > 75)
                 {
@@ -141,6 +152,34 @@ namespace Training.Programming.FinalTask.Logic
             return price;
         }
 
-      //  public void 
-    }
-}
+        public bool IsPolicyExistForThisPeriod(Policy policy)
+        {
+            DateTime startDate = policy.StartDate;
+            DateTime endDate = policy.EndDate;
+            var client = policy.Client.ClientSsn;
+            var product = policy.Product.ProductName;
+            Policy existingPolicy = GetPolicy(ssn: client, productName: product);
+            DateTime thisStartDate = existingPolicy.StartDate;
+            DateTime thisEndDate = existingPolicy.EndDate;
+
+            if (policy.Client.ClientSsn == existingPolicy.Client.ClientSsn &&
+                policy.Product.ProductName == existingPolicy.Product.ProductName)
+            {
+                //Verify periods
+                int resultStartDate = DateTime.Compare(startDate, thisStartDate);
+                int resultEndDate = DateTime.Compare(endDate, thisEndDate);
+                bool result = (resultStartDate == 0 && resultEndDate == 0) ? true : false;
+                return result;
+            }
+            else
+                return false;
+        }
+
+        public DateTime CalculatePaymentDate(Policy policy)
+        {
+            //Add 2 Monthes to Policy End date 
+            return policy.EndDate.AddMonths(2);
+        }
+
+     }
+ }
