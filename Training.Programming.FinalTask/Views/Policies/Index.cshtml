@@ -18,13 +18,13 @@
             @Html.DisplayNameFor(model => model.Premium)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.StartDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
         </th>
         <th></th>
     </tr>
@@ -38,13 +38,13 @@
             @Html.DisplayFor(modelItem => item.Premium)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.StartDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PolicyId }) |

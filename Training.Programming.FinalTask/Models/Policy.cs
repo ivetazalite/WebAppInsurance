@@ -9,7 +9,9 @@ namespace Training.Programming.FinalTask.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid PolicyId { get; set; }
-        public State PolicyState { get; set; }
+        public string PolicyNumber { get; set; }
+        public decimal Premium { get; set; }
+        public State State { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public virtual Client Client { get; set; }

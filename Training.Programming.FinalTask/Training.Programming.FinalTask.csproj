@@ -177,6 +177,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logic\InsuranceHandler.cs" />
+    <Compile Include="Migrations\201612080830338_Initial.cs" />
+    <Compile Include="Migrations\201612080830338_Initial.Designer.cs">
+      <DependentUpon>201612080830338_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612080839365_UpdatedModels.cs" />
+    <Compile Include="Migrations\201612080839365_UpdatedModels.Designer.cs">
+      <DependentUpon>201612080839365_UpdatedModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -190,6 +199,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-Training.Programming.FinalTask-20161130030358.mdf" />
+    <Content Include="App_Data\aspnet-Training.Programming.FinalTask-20161130030358_log.ldf">
+      <DependentUpon>aspnet-Training.Programming.FinalTask-20161130030358.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -261,9 +274,7 @@
     <Content Include="Views\Policies\Index.cshtml" />
     <Content Include="Views\Clients\CheckPrice.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -271,6 +282,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612080830338_Initial.resx">
+      <DependentUpon>201612080830338_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612080839365_UpdatedModels.resx">
+      <DependentUpon>201612080839365_UpdatedModels.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
