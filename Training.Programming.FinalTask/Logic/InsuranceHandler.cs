@@ -39,7 +39,7 @@ namespace Training.Programming.FinalTask.Logic
         {
 
             // before buy Insurance validate Client age 
-            string clientSsn = policy.Client.ClientSsn;
+            string clientSsn = policy.Client.SocialSecurityNumber;
             int age = GetClientsAge(clientSsn);
 
             if (age >= 18)
@@ -47,15 +47,15 @@ namespace Training.Programming.FinalTask.Logic
                 //this will change inserted Policy state to Active
                 if (IsPolicyExistForThisPeriod(policy) == false)
                 {
-                    policy.PolicyState = State.Active;
-                    policy.Product.ProductPrice = EmployeeDiscount(policy);
+                    policy.State = State.Active;
+                    policy.Product.Premium = EmployeeDiscount(policy);
                     //calculate payment date
                     CalculatePaymentDate(policy);
                     //Some message about payment date
                 }
                 else
                 {
-                    throw new ApplicationException($"You have already existing {policy.Product.ProductName} Policy for period from {policy.PolicyState} till {policy.EndDate}");
+                    throw new ApplicationException($"You have already existing {policy.Product.Name} Policy for period from {policy.State} till {policy.EndDate}");
                 }
              
 
@@ -77,7 +77,7 @@ namespace Training.Programming.FinalTask.Logic
             var today = DateTime.Today;
             int clientBirthdate = 0;
 
-            var clientSsn = _clients.GetBySocialSecurityNumber(ssn).ClientSsn.Substring(0,6);
+            var clientSsn = _clients.GetBySocialSecurityNumber(ssn).SocialSecurityNumber.Substring(0,6);
 
             int clientYear = clientSsn.Substring(0, 2).AsInt();
 
@@ -121,8 +121,8 @@ namespace Training.Programming.FinalTask.Logic
         public decimal PriceChanges(Policy policy)
         {
           //  int period = 0;
-         decimal halfYearPrice = policy.Product.ProductPrice + (policy.Product.ProductPrice * 5/100) ;
-         decimal quarterYearPrice = policy.Product.ProductPrice + (policy.Product.ProductPrice * 7/100);
+         decimal halfYearPrice = policy.Product.Premium + (policy.Product.Premium * 5/100) ;
+         decimal quarterYearPrice = policy.Product.Premium + (policy.Product.Premium * 7/100);
          var period = CalculatePolicyPeriod(policy);
 
             if (period  < 3 && period == 3)
@@ -137,7 +137,7 @@ namespace Training.Programming.FinalTask.Logic
 
             else 
             {
-                return policy.Product.ProductPrice;
+                return policy.Product.Premium;
             }
 
         }
@@ -156,14 +156,14 @@ namespace Training.Programming.FinalTask.Logic
         {
             DateTime startDate = policy.StartDate;
             DateTime endDate = policy.EndDate;
-            var client = policy.Client.ClientSsn;
-            var product = policy.Product.ProductName;
+            var client = policy.Client.SocialSecurityNumber;
+            var product = policy.Product.Name;
             Policy existingPolicy = GetPolicy(ssn: client, productName: product);
             DateTime thisStartDate = existingPolicy.StartDate;
             DateTime thisEndDate = existingPolicy.EndDate;
 
-            if (policy.Client.ClientSsn == existingPolicy.Client.ClientSsn &&
-                policy.Product.ProductName == existingPolicy.Product.ProductName)
+            if (policy.Client.SocialSecurityNumber == existingPolicy.Client.SocialSecurityNumber &&
+                policy.Product.Name == existingPolicy.Product.Name)
             {
                 //Verify periods
                 int resultStartDate = DateTime.Compare(startDate, thisStartDate);

@@ -40,7 +40,7 @@ namespace Training.Programming.FinalTask.Repositories
         {
             using (var db = new ApplicationDbContext())
             {
-                return db.Clients.FirstOrDefault(x => x.ClientSsn == ssn);
+                return db.Clients.FirstOrDefault(x => x.SocialSecurityNumber == ssn);
             }
         }
 

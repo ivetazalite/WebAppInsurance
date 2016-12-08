@@ -10,9 +10,10 @@ namespace Training.Programming.FinalTask.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ProductId { get; set; }
-        public string ProductName { get; set; }
-        public decimal ProductPrice { get; set; }
-        
+        public string Name { get; set; }
+        public DateTime CreatedDateTime { get; set; }
+        public decimal Premium { get; set; }
+
         public virtual List<Policy> Policies { get; set; }
     }
 }

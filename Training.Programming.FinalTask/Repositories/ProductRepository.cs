@@ -11,7 +11,7 @@ namespace Training.Programming.FinalTask.Repositories
         {
             using (var db = new ApplicationDbContext())
             {
-                return db.Products.FirstOrDefault(x => x.ProductName == productName);
+                return db.Products.FirstOrDefault(x => x.Name == productName);
             }
         }
 

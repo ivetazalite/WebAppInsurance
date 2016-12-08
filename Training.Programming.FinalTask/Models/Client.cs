@@ -10,8 +10,10 @@ namespace Training.Programming.FinalTask.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ClientId { get; set; }
-        public string ClientSsn { get; set; }
-        public Sex ClientSex { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string SocialSecurityNumber { get; set; }
+        public Sex Sex { get; set; }
         public Employee ClientType { get; set; }
         public virtual List<Policy> Policies { get; set; }
     }
