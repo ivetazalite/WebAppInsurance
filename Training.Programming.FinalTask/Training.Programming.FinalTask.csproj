@@ -273,6 +273,7 @@
     <Content Include="Views\Policies\Edit.cshtml" />
     <Content Include="Views\Policies\Index.cshtml" />
     <Content Include="Views\Clients\CheckPrice.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
