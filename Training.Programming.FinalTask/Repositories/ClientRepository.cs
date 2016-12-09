@@ -17,12 +17,12 @@ namespace Training.Programming.FinalTask.Repositories
                 return db.Clients.ToList();
             }
         }
-
         public void Add(Client newClient)
         {
             using (var db = new ApplicationDbContext())
             {
                 db.Clients.Add(newClient);
+                db.Entry(newClient).State = EntityState.Added;
                 db.SaveChanges();
             }
         }
@@ -44,6 +44,16 @@ namespace Training.Programming.FinalTask.Repositories
             }
         }
 
-      
+        public void Delete(Client client)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                db.Entry(client).State = EntityState.Deleted;
+                db.SaveChanges();
+    
+            }
+        }
+
+
     }
 }

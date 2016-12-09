@@ -15,7 +15,7 @@ namespace Training.Programming.FinalTask.Controllers
         public ActionResult Index()
         {
             var clients = _clientDb.All();
-
+            
             return View(clients);
         }
 
@@ -88,6 +88,55 @@ namespace Training.Programming.FinalTask.Controllers
                 return RedirectToAction("Index");
             }
             return View(client);
+        }
+
+        // GET: Clients/Details/5
+        public ActionResult CheckPrice(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var client = _clientDb.All().FirstOrDefault(x => x.ClientId == id.Value);
+
+
+
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+            return View(client);
+        }
+
+        // GET: Clients/Delete/5
+        public ActionResult Delete(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var client = _clientDb.All().FirstOrDefault(x => x.ClientId == id.Value);
+          
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+            return View(client);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete([Bind(Include = "ClientId,Name,Surname,SocialSecurityNumber,Sex,ClientType")] Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                _clientDb.Delete(client);
+                return RedirectToAction("Index");
+            }
+            var clients = _clientDb.All();
+             return View(clients);
         }
     }
 }

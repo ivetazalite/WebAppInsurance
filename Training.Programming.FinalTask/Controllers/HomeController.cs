@@ -10,12 +10,14 @@ namespace Training.Programming.FinalTask.Controllers
     {
         public ActionResult Index()
         {
+             ViewBag.Message = "Hello! Do You need insurance? We can sell to you";
+
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Hello! Do You need insurance? We can sell to you";
 
             return View();
         }

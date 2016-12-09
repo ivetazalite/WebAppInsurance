@@ -55,7 +55,7 @@ namespace Training.Programming.FinalTask.Logic
                 }
                 else
                 {
-                    throw new ApplicationException($"You have already existing {policy.Product.Name} Policy for period from {policy.State} till {policy.EndDate}");
+                    throw new ApplicationException ($"You have already existing {policy.Product.Name} Policy for period from {policy.State} till {policy.EndDate}");
                 }
              
 
@@ -66,8 +66,7 @@ namespace Training.Programming.FinalTask.Logic
 
                 else
                 {
-                    throw new ApplicationException(
-                        $"You can't buy insurance if you are younger than 18 - and your SSN = {clientSsn}");
+                    throw new ApplicationException($"You can't buy insurance if you are younger than 18 - and your SSN = {clientSsn }" );
                 }
             }
         }

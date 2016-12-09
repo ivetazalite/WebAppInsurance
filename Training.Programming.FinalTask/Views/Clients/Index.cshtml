@@ -26,7 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ClientType)
         </th>
-        <th></th>
+		 <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -46,9 +46,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.ClientType)
         </td>
-        <td>
+		 <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ClientId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ClientId }) |
+			@Html.ActionLink("Price", "CheckPrice", new { id=item.ClientId }) |		
             @Html.ActionLink("Delete", "Delete", new { id=item.ClientId })
         </td>
     </tr>
