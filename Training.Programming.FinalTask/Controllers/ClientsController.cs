@@ -126,6 +126,7 @@ namespace Training.Programming.FinalTask.Controllers
             return View(client);
         }
 
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete([Bind(Include = "ClientId,Name,Surname,SocialSecurityNumber,Sex,ClientType")] Client client)
@@ -135,8 +136,8 @@ namespace Training.Programming.FinalTask.Controllers
                 _clientDb.Delete(client);
                 return RedirectToAction("Index");
             }
-            var clients = _clientDb.All();
-             return View(clients);
+            //var clients = _clientDb.All();
+             return View();
         }
     }
 }

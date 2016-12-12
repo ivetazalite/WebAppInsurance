@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.Ajax.Utilities;
 using Training.Programming.FinalTask.Models;
 
 namespace Training.Programming.FinalTask.Repositories
@@ -48,8 +49,9 @@ namespace Training.Programming.FinalTask.Repositories
         {
             using (var db = new ApplicationDbContext())
             {
-                db.Entry(client).State = EntityState.Deleted;
-                db.SaveChanges();
+               //db.Entry(client).State = EntityState.Deleted;
+               db.Clients.Remove(client);
+               db.SaveChanges();
     
             }
         }

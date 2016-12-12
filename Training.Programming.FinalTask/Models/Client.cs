@@ -15,7 +15,6 @@ namespace Training.Programming.FinalTask.Models
         public string SocialSecurityNumber { get; set; }
         public Sex Sex { get; set; }
         public Employee ClientType { get; set; }
-       // public string State { get; set; }
         public virtual List<Policy> Policies { get; set; }
     }
 
